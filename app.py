@@ -1,10 +1,10 @@
 import gradio as gr
-import numpy as np
+import cv2
 
-def greet(name):
-    array = np.array([1, 2, 3])
-    return "Hello " + name + str(array) +  "!!"
-
-iface = gr.Interface(fn=greet, inputs="text", outputs="text")
+def gray(image):
+    grayscale = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    return grayscale
+    
+iface = gr.Interface(fn=gray, inputs="image", outputs="image")
 iface.launch()
 
